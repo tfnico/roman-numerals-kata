@@ -9,9 +9,20 @@ public class RomanNumeralsTest {
 	public static class RomanNumerals {
 
 		public static String convert(int number) {
+			
+			if(number == 4) return "IV";
+			
+			if(number >= 10) {
+				int rest = number - 10;
+				return "X" + convert(rest);
+			}
+			
+			if(number >= 5){
+				int rest = number - 5;
+				return (rest > 3 ) ? "IX" : "V" + convert(rest);
+			}
+			
 			StringBuilder builder = new StringBuilder();
-//			if(number > 3) 
-			if(number % 5 == 0) return "V";
 			for (int i = 0; i < number; i++) builder.append("I");
 			return builder.toString();
 		}
@@ -33,7 +44,23 @@ public class RomanNumeralsTest {
 	}
 	
 	@Test
-	public void four() throws Exception {
+	public void four() {
 		assertThat("IV", is(RomanNumerals.convert(4)));
+	}
+	
+	@Test
+	public void six() {
+		assertThat("VI", is(RomanNumerals.convert(6)));
+	}
+	
+	@Test
+	public void nine() {
+		assertThat("IX", is(RomanNumerals.convert(9)));
+	}
+	
+	@Test
+	public void ten() {
+		assertThat("X", is(RomanNumerals.convert(10)));
+		
 	}
 }
