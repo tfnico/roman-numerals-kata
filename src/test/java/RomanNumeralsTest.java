@@ -10,6 +10,12 @@ public class RomanNumeralsTest {
 	public void forty() {
 		assertThat("XL", is(RomanNumerals.convert(40)));
 	}
+	
+	@Test
+	public void next() {
+		assertThat("XLI", is(RomanNumerals.convert(41)));
+	}
+	
 
 	@Test
 	public void one() {

@@ -5,6 +5,11 @@ public class RomanNumerals {
 		
 		if(number == 4) return "IV";
 		
+		if(number >= 40) {
+			int rest = number - 40;
+			return "XL" + convert(rest);
+		}
+		
 		if(number >= 10) {
 			int rest = number - 10;
 			return "X" + convert(rest);
