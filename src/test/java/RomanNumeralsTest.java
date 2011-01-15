@@ -6,26 +6,9 @@ import static org.hamcrest.CoreMatchers.*;
 
 public class RomanNumeralsTest {
 	
-	public static class RomanNumerals {
-
-		public static String convert(int number) {
-			
-			if(number == 4) return "IV";
-			
-			if(number >= 10) {
-				int rest = number - 10;
-				return "X" + convert(rest);
-			}
-			
-			if(number >= 5){
-				int rest = number - 5;
-				return (rest > 3 ) ? "IX" : "V" + convert(rest);
-			}
-			
-			StringBuilder builder = new StringBuilder();
-			for (int i = 0; i < number; i++) builder.append("I");
-			return builder.toString();
-		}
+	@Test
+	public void forty() {
+		assertThat("XL", is(RomanNumerals.convert(40)));
 	}
 
 	@Test
@@ -69,7 +52,9 @@ public class RomanNumeralsTest {
 	}
 	
 	@Test
-	public void next() {
-		assertThat("XXI", is(RomanNumerals.convert(21)));
+	public void thirtyNine() {
+		assertThat("XXXIX", is(RomanNumerals.convert(39)));
 	}
+	
+	
 }
