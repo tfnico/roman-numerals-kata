@@ -61,6 +61,15 @@ public class RomanNumeralsTest {
 	@Test
 	public void ten() {
 		assertThat("X", is(RomanNumerals.convert(10)));
-		
+	}
+	
+	@Test
+	public void fourteen() {
+		assertThat("XIV", is(RomanNumerals.convert(14)));
+	}
+	
+	@Test
+	public void next() {
+		assertThat("XXI", is(RomanNumerals.convert(21)));
 	}
 }
