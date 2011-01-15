@@ -7,12 +7,17 @@ import static org.hamcrest.CoreMatchers.*;
 public class RomanNumeralsTest {
 	
 	@Test
+	public void fifty() {
+		assertThat("L", is(RomanNumerals.convert(50)));
+	}
+	
+	@Test
 	public void forty() {
 		assertThat("XL", is(RomanNumerals.convert(40)));
 	}
 	
 	@Test
-	public void next() {
+	public void fourtyOne() {
 		assertThat("XLI", is(RomanNumerals.convert(41)));
 	}
 	
