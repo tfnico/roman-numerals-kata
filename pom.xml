@@ -10,7 +10,7 @@
 	<dependencies>
 		<dependency>
 			<artifactId>junit</artifactId>
-			<groupId>org.junit</groupId>
+			<groupId>junit</groupId>
 		</dependency>
 	</dependencies>
 	<build>
@@ -22,7 +22,7 @@
 		<dependencies>
 			<dependency>
 				<artifactId>junit</artifactId>
-				<groupId>org.junit</groupId>
+				<groupId>junit</groupId>
 				<version>4.8.2</version>
 			</dependency>
 		</dependencies>
