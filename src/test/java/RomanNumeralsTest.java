@@ -9,6 +9,10 @@ public class RomanNumeralsTest {
     public static class RomanNumerals {
 
     	enum Numeral{
+    		M(1000),
+    	    CM(900),
+    		D(500),
+    		CD(400),
     		C(100),
     		XC(90),
     		L(50),
@@ -38,84 +42,112 @@ public class RomanNumeralsTest {
     }
 
     @Test
+    public void threeThousandNineHundredAndNinetyNine() {
+        assertRomanNumeralEquals("MMMCMXCIX", 3999);
+    }
+
+    @Test
+    public void oneThousand() {
+        assertRomanNumeralEquals("M", 1000);
+    }
+
+    @Test
+    public void nineHundred() {
+        assertRomanNumeralEquals("CM", 900);
+    }
+
+    @Test
+    public void fiveHundred() {
+        assertRomanNumeralEquals("D", 500);
+    }
+
+    @Test
+    public void fourHundred() {
+        assertRomanNumeralEquals("CD", 400);
+    }
+
+    @Test
     public void threeHundredAndNinetyNine() {
-        assertThat("CCCXCIX", is(RomanNumerals.convert(399)));
+        assertRomanNumeralEquals("CCCXCIX", 399);
     }
 
     @Test
     public void ninety() {
-        assertThat("XC", is(RomanNumerals.convert(90)));
+        assertRomanNumeralEquals("XC", 90);
     }
 
     @Test
     public void eightyNine() {
-        assertThat("LXXXIX", is(RomanNumerals.convert(89)));
+        assertRomanNumeralEquals("LXXXIX", 89);
     }
 
     @Test
     public void sixty() {
-        assertThat("LX", is(RomanNumerals.convert(60)));
+        assertRomanNumeralEquals("LX", 60);
     }
 
 	@Test
 	public void fifty() {
-		assertThat("L", is(RomanNumerals.convert(50)));
+		assertRomanNumeralEquals("L", 50);
 	}
 	
 	@Test
 	public void forty() {
-		assertThat("XL", is(RomanNumerals.convert(40)));
+		assertRomanNumeralEquals("XL", 40);
 	}
 	
 	@Test
 	public void fourtyOne() {
-		assertThat("XLI", is(RomanNumerals.convert(41)));
+		assertRomanNumeralEquals("XLI", 41);
 	}
 	
 	@Test
 	public void one() {
-		assertThat("I", is(RomanNumerals.convert(1)));
+		assertRomanNumeralEquals("I", 1);
 	}
 	
 	@Test
 	public void two() throws Exception {
-		assertThat("II", is(RomanNumerals.convert(2)));
+		assertRomanNumeralEquals("II", 2);
 	}
 	
 	@Test
 	public void five() {
-		assertThat("V", is(RomanNumerals.convert(5)));
+		assertRomanNumeralEquals("V", 5);
 	}
 	
 	@Test
 	public void four() {
-		assertThat("IV", is(RomanNumerals.convert(4)));
+		assertRomanNumeralEquals("IV", 4);
 	}
 	
 	@Test
 	public void six() {
-		assertThat("VI", is(RomanNumerals.convert(6)));
+		assertRomanNumeralEquals("VI", 6);
 	}
 	
 	@Test
 	public void nine() {
-		assertThat("IX", is(RomanNumerals.convert(9)));
+		assertRomanNumeralEquals("IX", 9);
 	}
 	
 	@Test
 	public void ten() {
-		assertThat("X", is(RomanNumerals.convert(10)));
+		assertRomanNumeralEquals("X", 10);
 	}
 	
 	@Test
 	public void fourteen() {
-		assertThat("XIV", is(RomanNumerals.convert(14)));
+		assertRomanNumeralEquals("XIV", 14);
 	}
 	
 	@Test
 	public void thirtyNine() {
-		assertThat("XXXIX", is(RomanNumerals.convert(39)));
+		assertRomanNumeralEquals("XXXIX", 39);
 	}
-	
+
+    private static void assertRomanNumeralEquals(String roman, int arab) {
+        assertThat(roman, is(RomanNumerals.convert(arab)));
+    }
 	
 }
