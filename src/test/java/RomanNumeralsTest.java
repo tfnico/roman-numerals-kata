@@ -10,17 +10,11 @@ public class RomanNumeralsTest {
 
     	enum Numeral{
     		M(1000),
-    	    CM(900),
     		D(500),
-    		CD(400),
     		C(100),
-    		XC(90),
     		L(50),
-    		XL(40),
     		X(10),
-    		IX(9),
     		V(5),
-    		IV(4),
     		I(1);
     		
     		private int arab;
@@ -29,16 +23,48 @@ public class RomanNumeralsTest {
     		    this.arab = arab;
     		}
     	}
-    	
+    	// number = 5
+    	// numeral = X
+    	// arab = 10
+    	// if(5 >= 10) return X + convert(5 - 10)
+    	// nextNumeral = V
+    	// if (5 >= 10 - 5) return V + X
+    	//  
+    	//
         public static String convert(int number) {
             if(number == 0) return "";
         	for(Numeral numeral:Numeral.values()){
         		int arab = numeral.arab;
                 if(number >= arab)
         		    return numeral.toString() + convert(number - arab);
+                Numeral nextNumeral = nextNumeral(numeral);
+                if (nextNumeral != null && number >= arab - nextNumeral.arab)
+                    return nextNumeral.toString() + numeral.toString();
+                
         	}
         	throw new IllegalStateException("Should not be able to get this far.");
         }
+
+        // TODO: Should be private.
+        static Numeral nextNumeral(Numeral numeral) {
+        	if(Numeral.I.equals(numeral)) return null;
+        	return Numeral.values()[numeral.ordinal() + 1];
+        }
+    }
+
+    @Test
+    public void nextNumeralAfterIShouldReturnNull() {
+        assertNull(RomanNumerals.nextNumeral(RomanNumerals.Numeral.I));
+    }
+
+    @Test
+    public void nextNumeralAfterVShouldBeI() {
+        assertThat(RomanNumerals.Numeral.I, is(RomanNumerals.nextNumeral(RomanNumerals.Numeral.V)));
+    }
+
+    @Test
+    public void nextNumeralAfterMShouldBeD() {
+        assertThat(RomanNumerals.Numeral.D, is(RomanNumerals.nextNumeral(RomanNumerals.Numeral.M)));
     }
 
     @Test
